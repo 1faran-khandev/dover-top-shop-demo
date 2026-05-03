@@ -1,5 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 
+import photo0 from "./assets/photo-0.jpg";
+import photo1 from "./assets/photo-1.jpg";
+import photo2 from "./assets/photo-2.jpg";
+import photo3 from "./assets/photo-3.jpg";
+
 const COLORS = {
   dark: "#0a1409",
   darkMid: "#0f1a0e",
@@ -198,10 +203,15 @@ function Hero() {
         </div>
         <div style={{ borderRadius: 2, overflow: "hidden", height: 460, animation: "fadeUp 0.8s 0.15s ease both" }} className="hero-image">
           <img
-            src="src/assets/photo-0.jpg"
-            alt="Food at Dover Top Shop"
-            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.85) saturate(1.1)" }}
-          />
+        src={photo0}
+        alt="Food at Dover Top Shop"
+        style={{
+          width: "100%",
+          height: 400,
+          objectFit: "cover",
+          marginTop: 20,
+        }}
+      />
         </div>
       </div>
     </section>
@@ -253,10 +263,50 @@ function About() {
             ))}
           </div>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "200px 200px", gap: 8 }} className="photo-mosaic">
-          <img src="src/assets/photo-1.jpg" alt="Cafe interior" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2 }} />
-          <img src="src/assets/photo-2.jpg" alt="Food" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2, gridRow: "1 / span 2", height: "100%" }} />
-          <img src="src/assets/photo-3.jpg" alt="Coffee" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2 }} />
+        <div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "1.2fr 1fr",
+    gridTemplateRows: "200px 200px",
+    gap: 10,
+  }}
+>
+  {/* Big left image */}
+  <img
+    src={photo1}
+    alt="Cafe interior"
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      gridRow: "1 / span 2",
+      borderRadius: 6,
+    }}
+  />
+
+  {/* Top right */}
+  <img
+    src={photo2}
+    alt="Food"
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: 6,
+    }}
+  />
+
+  {/* Bottom right */}
+  <img
+    src={photo3}
+    alt="Coffee"
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: 6,
+    }}
+  />
         </div>
       </div>
     </section>
