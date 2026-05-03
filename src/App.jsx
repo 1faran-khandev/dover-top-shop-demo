@@ -198,7 +198,7 @@ function Hero() {
         </div>
         <div style={{ borderRadius: 2, overflow: "hidden", height: 460, animation: "fadeUp 0.8s 0.15s ease both" }} className="hero-image">
           <img
-            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=85"
+            src="src/assets/photo-0.jpg"
             alt="Food at Dover Top Shop"
             style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.85) saturate(1.1)" }}
           />
@@ -254,9 +254,9 @@ function About() {
           </div>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "200px 200px", gap: 8 }} className="photo-mosaic">
-          <img src="https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?w=500&q=80" alt="Cafe interior" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2 }} />
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80" alt="Food" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2, gridRow: "1 / span 2", height: "100%" }} />
-          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&q=80" alt="Coffee" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2 }} />
+          <img src="src/assets/photo-1.jpg" alt="Cafe interior" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2 }} />
+          <img src="src/assets/photo-2.jpg" alt="Food" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2, gridRow: "1 / span 2", height: "100%" }} />
+          <img src="src/assets/photo-3.jpg" alt="Coffee" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2 }} />
         </div>
       </div>
     </section>
