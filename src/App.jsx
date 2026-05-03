@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 import photo0 from "./assets/photo-0.jpg";
 import photo1 from "./assets/photo-1.jpg";
@@ -203,15 +203,10 @@ function Hero() {
         </div>
         <div style={{ borderRadius: 2, overflow: "hidden", height: 460, animation: "fadeUp 0.8s 0.15s ease both" }} className="hero-image">
           <img
-        src={photo0}
-        alt="Food at Dover Top Shop"
-        style={{
-          width: "100%",
-          height: 400,
-          objectFit: "cover",
-          marginTop: 20,
-        }}
-      />
+            src={photo0}
+            alt="Food at Dover Top Shop"
+            style={{ width: "100%", height: 400, objectFit: "cover", marginTop: 20 }}
+          />
         </div>
       </div>
     </section>
@@ -231,6 +226,67 @@ function Strip() {
         ))}
       </div>
     </div>
+  );
+}
+
+/* ─── PHOTO MOSAIC ─────────────────────────────────────────────────────────
+   Desktop : classic 2-col grid (tall left + 2 stacked right)
+   Mobile  : horizontal scroll strip — all 3 visible, small fixed height
+──────────────────────────────────────────────────────────────────────────── */
+function PhotoMosaic() {
+  return (
+    <>
+      {/* Desktop mosaic */}
+      <div className="photo-mosaic-desktop" style={{
+        display: "grid",
+        gridTemplateColumns: "1.2fr 1fr",
+        gridTemplateRows: "200px 200px",
+        gap: 10,
+      }}>
+        <img
+          src={photo1}
+          alt="Cafe interior"
+          style={{ width: "100%", height: "100%", objectFit: "cover", gridRow: "1 / span 2", borderRadius: 6 }}
+        />
+        <img
+          src={photo2}
+          alt="Food"
+          style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 6 }}
+        />
+        <img
+          src={photo3}
+          alt="Coffee"
+          style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 6 }}
+        />
+      </div>
+
+      {/* Mobile horizontal scroll strip */}
+      <div className="photo-mosaic-mobile" style={{
+        display: "none",
+        gap: 10,
+        overflowX: "auto",
+        WebkitOverflowScrolling: "touch",
+        scrollSnapType: "x mandatory",
+        paddingBottom: 4,
+      }}>
+        {[photo1, photo2, photo3].map((src, i) => (
+          <img
+            key={i}
+            src={src}
+            alt={`Gallery ${i + 1}`}
+            style={{
+              flexShrink: 0,
+              width: "72vw",
+              maxWidth: 260,
+              height: 160,
+              objectFit: "cover",
+              borderRadius: 6,
+              scrollSnapAlign: "start",
+            }}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 
@@ -263,51 +319,9 @@ function About() {
             ))}
           </div>
         </div>
-        <div
-  style={{
-    display: "grid",
-    gridTemplateColumns: "1.2fr 1fr",
-    gridTemplateRows: "200px 200px",
-    gap: 10,
-  }}
->
-  {/* Big left image */}
-  <img
-    src={photo1}
-    alt="Cafe interior"
-    style={{
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      gridRow: "1 / span 2",
-      borderRadius: 6,
-    }}
-  />
 
-  {/* Top right */}
-  <img
-    src={photo2}
-    alt="Food"
-    style={{
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      borderRadius: 6,
-    }}
-  />
-
-  {/* Bottom right */}
-  <img
-    src={photo3}
-    alt="Coffee"
-    style={{
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      borderRadius: 6,
-    }}
-  />
-        </div>
+        {/* Photo mosaic — responsive component */}
+        <PhotoMosaic />
       </div>
     </section>
   );
@@ -469,15 +483,21 @@ export default function App() {
         img { display: block; }
         button { font-family: inherit; }
 
+        /* Hide scrollbar on mobile strip but keep scroll functional */
+        .photo-mosaic-mobile::-webkit-scrollbar { display: none; }
+        .photo-mosaic-mobile { -ms-overflow-style: none; scrollbar-width: none; }
+
         @media (max-width: 768px) {
           .nav-links-desktop { display: none !important; }
           .hamburger-btn { display: flex !important; }
           .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; padding: 40px 20px 48px !important; }
           .hero-image { height: 260px !important; }
           .about-grid { grid-template-columns: 1fr !important; }
-          .photo-mosaic { height: 240px !important; grid-template-rows: 240px !important; }
-          .photo-mosaic img:nth-child(1) { display: none; }
-          .photo-mosaic img:nth-child(3) { display: none; }
+
+          /* Switch mosaic layouts */
+          .photo-mosaic-desktop { display: none !important; }
+          .photo-mosaic-mobile { display: flex !important; }
+
           .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
         }
 
